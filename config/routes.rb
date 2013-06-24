@@ -3,9 +3,15 @@ HackerNews::Application.routes.draw do
 
   resources :users do
     resources :posts, :controller => "users_posts"
+    resources :comments, :controller => "users_comments"
   end
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
