@@ -12,11 +12,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(params[:post])
-    if @post.create
+    @post = Post.new(params[:post])
+    if @post.save
       redirect_to post_path(@post.id)
     else
-      flash[:error] = "Boo sad sad."
+      flash[:notice] = "Boo sad sad."
       redirect_to new_post_path
     end
   end
