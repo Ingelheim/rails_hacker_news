@@ -4,8 +4,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create(params[:comment])
-    redirect_to @comments if @comment.save
+    @comment = Comment.new(params[:comment])
+    if @comment.save
+      redirect_to comments_path 
+    else
+      flash[:notice] = "Boo sad comment."
+      redirect_to comments_path
+    end
   end
 
   def new
