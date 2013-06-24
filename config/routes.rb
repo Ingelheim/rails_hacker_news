@@ -8,7 +8,10 @@ HackerNews::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :pvotes
   end
+
+
 
 
   
