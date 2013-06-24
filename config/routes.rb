@@ -1,5 +1,11 @@
 HackerNews::Application.routes.draw do
-  resources :user
+  root :to => 'posts#index'
+
+  resources :users do
+    resources :posts, :controller => "users_posts"
+  end
+
+  resources :posts
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
