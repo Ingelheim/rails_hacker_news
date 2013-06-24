@@ -1,3 +1,3 @@
-class Pvote < ActiveRecord::Base
-  belongs_to :post
+class Vote < ActiveRecord::Base
+  belongs_to :voteable, :polymorphic => true
 end

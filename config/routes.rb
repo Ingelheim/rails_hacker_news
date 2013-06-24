@@ -7,11 +7,11 @@ HackerNews::Application.routes.draw do
   end
 
   resources :posts do
-    resources :comments
-    resources :pvotes
+    resources :comments do
+      resources :cvotes, :only => "update"
+    end
+    resources :pvotes, :only => "update"
   end
-
-
 
 
   
