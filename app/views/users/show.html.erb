@@ -1,0 +1,18 @@
+<h1> Hello <%= @user.username %> </h1>
+
+<h3> Your posts: </h3>
+<% @user.posts.each do |post| %> 
+<p>
+<%= link_to post.title, :post %>
+<!-- <a href="/post/<%=post.id%>"><%= post.title %></a> -->
+</p>
+
+<% end %>
+
+<h3> Your comments: </h3>
+<% @user.comments.each do |comment| %>
+<p>Commented on: 
+
+<%= link_to comment.post.title , post_path(comment.post) %> Comment: <%= comment.text %></p>
+
+<% end %>

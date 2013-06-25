@@ -6,14 +6,17 @@ HackerNews::Application.routes.draw do
     resources :comments, :controller => "users_comments"
   end
 
+  resources :sessions
+
   resources :posts do
     resources :comments do
-      resources :cvotes, :only => "update"
+      resources :votes
     end
-    resources :pvotes, :only => "update"
+    resources :votes
   end
 
-
+  match 'logout/' => 'sessions#destroy'
+  match 'users/login/' => 'sessions#create'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
