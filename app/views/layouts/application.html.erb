@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="nav">
+    <h3 id="logo"><a class="toplinks" href="/">Cracker News</a></h3>
 
-<%= yield %>
+    <% if !current_user %>
+    <h3 id="login_button">
 
+      <%= link_to "Login/Signup", :new_user %>
+    </h3>
+
+    <% else %>
+    <h3 id="login_button"><%= link_to current_user.username, user_path(current_user)%> (<%= link_to "Sign Out", :logout %>)</h3>
+    <% end %>
+  </div>
+  <div class="main">
+    <%= yield %>
+  </div>
 </body>
 </html>
